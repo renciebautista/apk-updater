@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(array('prefix' => 'api'), function()
+{
+	Route::get('protected', 'Api\UpdateapkController@download');
+	
+});
