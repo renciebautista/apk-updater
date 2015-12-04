@@ -23,7 +23,7 @@ class UpdateapkController extends Controller
         
     }
 
-    public function download(Request $request){
+    public function download(Request $request, $filename){
         // // $entry = Fileentry::where('file_id', '=', $fileId)->firstOrFail();
         // // $pathToFile=storage_path()."/app/".$entry->filename;
         $pathToFile = storage_path()."/apk/app-debug.apk";

@@ -11,6 +11,6 @@ class CheckupdateController extends Controller
 {
     public function check(Request $request){
         echo "have update\n";
-        echo "http://apps.chasetech.com/api/protected\n";
+        echo "http://apps.chasetech.com/api/protected/app-debug.apk\n";
     }
 }
