@@ -26,7 +26,7 @@ class UpdateapkController extends Controller
         
     }
 
-    public function download(Request $request){
+    public function download(Request $request, $filename){
         // // $entry = Fileentry::where('file_id', '=', $fileId)->firstOrFail();
         // // $pathToFile=storage_path()."/app/".$entry->filename;
         $pathToFile = storage_path()."/apk/app-debug.apk";
@@ -44,8 +44,8 @@ class UpdateapkController extends Controller
             header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
             header('Pragma: public');
             header('Content-Length: ' . filesize($file));
-            ob_clean();
-            flush();
+            // ob_clean();
+            // flush();
             readfile($file);
             exit;
         }
