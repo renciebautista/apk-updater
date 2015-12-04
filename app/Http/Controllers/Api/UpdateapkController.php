@@ -36,7 +36,6 @@ class UpdateapkController extends Controller
 
         $file = $pathToFile; //not public folder
         if (file_exists($file)) {
-            echo $file;
             header('Content-Description: File Transfer');
             header('Content-Type: application/vnd.android.package-archive');
             header('Content-Disposition: attachment; filename='.basename($file));
@@ -48,7 +47,7 @@ class UpdateapkController extends Controller
             ob_clean();
             flush();
             readfile($file);
-            // exit;
+            exit;
         }
     }
 }
