@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+	# Use PHP 5.5 as default
+	AddHandler application/x-httpd-php55 .php
+
+	RewriteEngine on
+	RewriteCond %{REQUEST_URI} !^public
+	RewriteRule ^(.*)$ public/$1 [L]
+	
+</IfModule>
