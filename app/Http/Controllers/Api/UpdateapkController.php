@@ -18,6 +18,7 @@ class UpdateapkController extends Controller
     {
         
         echo "have update\n";
+        // echo "no update\n";
         echo "http://apps.chasetech.com/api/protected\n";
         
     }
@@ -25,7 +26,7 @@ class UpdateapkController extends Controller
     public function download(Request $request){
         // $entry = Fileentry::where('file_id', '=', $fileId)->firstOrFail();
         // $pathToFile=storage_path()."/app/".$entry->filename;
-        $pathToFile=storage_path()."/apk/test.apk";
+        $pathToFile=storage_path()."/apk/app-debug.apk";
         return response()->download($pathToFile);
 
     }
