@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::group(array('prefix' => 'api'), function()
 {
+	Route::get('test', 'Api\UpdateapkController@index');
 	Route::get('protected', 'Api\UpdateapkController@download');
 	Route::post('check', 'Api\CheckupdateController@check');
 	
