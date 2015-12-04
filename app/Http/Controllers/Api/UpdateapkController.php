@@ -17,9 +17,12 @@ class UpdateapkController extends Controller
     public function index()
     {
         
+        // echo "have update\n";
+        // // echo "no update\n";
+        // echo "http://apps.chasetech.com/api/protected\n";
+
         echo "have update\n";
-        // echo "no update\n";
-        echo "http://apps.chasetech.com/api/protected\n";
+        echo "http://apps.chasetech.com/api/protected/app-debug.apk\n";
         
     }
 
