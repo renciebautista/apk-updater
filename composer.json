@@ -6,13 +6,17 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "laravelcollective/html": "5.1.*",
+        "tufanbarisyildirim/php-apk-parser":"dev-master",
+        "cknow/laravel-support": "~0.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpspec/phpspec": "~2.1",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [

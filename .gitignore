@@ -4,3 +4,5 @@ Homestead.yaml
 Homestead.json
 *.apk
 .env
+/storage/apk
+*.pem

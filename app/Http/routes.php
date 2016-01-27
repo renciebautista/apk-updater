@@ -15,10 +15,45 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+
+
+	$file = storage_path()."/apk/app-debug.apk";
+
+// echo 'MD5 file hash of ' . $file . ': ' . md5_file($file);
+
+	$bytes = File::size($file);
+
+	// dd(str_format_filesize($bytes));
+
+
+    $apk = new \ApkParser\Parser($file);
+
+	$manifest = $apk->getManifest();
+
+	$labelResourceId = $apk->getManifest()->getApplication()->getLabel();
+	$appLabel = $apk->getResources($labelResourceId);
+
+
+	echo $appLabel[0];
+
+	echo '<pre>';
+	echo "Application Name  : " . $appLabel[0]  . "\r\n";
+	echo "Package Name      : " . $manifest->getPackageName()  . "\r\n";
+	echo "Version           : " . $manifest->getVersionName()  . " (" . $manifest->getVersionCode() . ")\r\n";
+	echo "Min Sdk Level     : " . $manifest->getMinSdkLevel()  . "\r\n";
+	echo "Min Sdk Platform  : " . $manifest->getMinSdk()->platform ."\r\n";
+
+	echo "------------- Permssions List -------------\r\n";
+
+});
+
+Route::resource('apk', 'ApkController');
+
 Route::group(array('prefix' => 'api'), function()
 {
 	Route::get('test', 'Api\UpdateapkController@index');
-	Route::get('protected/{filename}', 'Api\UpdateapkController@download');
+	Route::get('protected/{token}', 'Api\UpdateapkController@download');
 	Route::post('check', 'Api\CheckupdateController@check');
 	
 });
