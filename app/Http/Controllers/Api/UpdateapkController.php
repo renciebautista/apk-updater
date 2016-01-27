@@ -21,9 +21,11 @@ class UpdateapkController extends Controller
         //   
     }
 
-    public function download(Request $request, $token){
+    public function download(Request $request, $token, $filename){
         
-        $apk = Apk::where('token', $token)->first();
+        $apk = Apk::where('token', $token)
+            ->where('filename', $filename)
+            ->first();
 
         if(!empty($apk)){
             $pathToFile = storage_path()."/apk/".$apk->pkgname."/".$apk->filename;

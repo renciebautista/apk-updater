@@ -25,7 +25,7 @@ class CheckupdateController extends Controller
     		if($apk->version > $version){
     			echo "have update\n";
         		// echo "http://apps.chasetech.com/api/protected/app-debug.apk\n";
-                echo action('Api\UpdateapkController@download', $apk->token)."\n";
+                echo action('Api\UpdateapkController@download', array('token' => $apk->token, 'filename' => $apk->filename))."\n";
     		}else{
     			echo "no update available\n";
     		}
