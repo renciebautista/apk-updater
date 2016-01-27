@@ -20,6 +20,7 @@
 						<th>Size</th>
 						<th>Uploaded at</th>
 						<th>MD5</th>
+						<th></th>
 					<th></th>
 					</tr>
 				</thead>
@@ -32,8 +33,13 @@
 						<td>{{ $apk->version }}</td> 
 						<td>0</td> 
 						<td>{{ $apk->filesize }}</td> 
-						<td>{{ $apk->app_name }}</td> 
+						<td>{{ $apk->created_at }}</td> 
 						<td>{{ $apk->md5 }}</td> 
+						<td>
+							{!! Form::open(array('method' => 'DELETE', 'action' => array('ApkController@destroy', $apk->id), 'class' => 'disable-button')) !!}                       
+							{!! Form::submit('Remove', array('class'=> 'btn btn-danger btn-xs','onclick' => "if(!confirm('Are you sure to delete this apk?')){return false;};")) !!}
+							{!! Form::close() !!}
+						</td>
 					</tr> 
 					@endforeach
 					@else

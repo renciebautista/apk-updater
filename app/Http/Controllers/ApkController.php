@@ -132,6 +132,16 @@ class ApkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $apk = Apk::findOrFail($id);
+
+        $path =  base_path().'/storage/apk/'.$apk->pkgname;
+        \File::deleteDirectory($path);
+
+        $apk->delete();
+        
+        Session::flash('flash_class', 'alert-success');
+        Session::flash('flash_message', 'Apk successfully deleted.');
+        return redirect()->route("apk.index");
+
     }
 }

@@ -10,10 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', ['as' => 'apk.index', 'uses' => 'ApkController@index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/test', function () {
 
