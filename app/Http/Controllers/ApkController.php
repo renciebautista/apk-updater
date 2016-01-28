@@ -98,7 +98,9 @@ class ApkController extends Controller
      */
     public function show($id)
     {
-        //
+        $apk = Apk::findOrFail($id);
+        $path = base_path().'/storage/apk/'.$apk->pkgname.'/'.$apk->filename;
+        return \Response::download($path, $apk->file_name);
     }
 
     /**

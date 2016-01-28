@@ -20,7 +20,7 @@
 						<th>Size</th>
 						<th>Uploaded at</th>
 						<th>MD5</th>
-						<th></th>
+						<th colspan="2"></th>
 					<th></th>
 					</tr>
 				</thead>
@@ -39,6 +39,9 @@
 							{!! Form::open(array('method' => 'DELETE', 'action' => array('ApkController@destroy', $apk->id), 'class' => 'disable-button')) !!}                       
 							{!! Form::submit('Remove', array('class'=> 'btn btn-danger btn-xs','onclick' => "if(!confirm('Are you sure to delete this apk?')){return false;};")) !!}
 							{!! Form::close() !!}
+						</td>
+						<td>
+							{!! Html::linkRoute('apk.show', 'Download', array('id' => $apk->id), ['class' => 'btn btn-success btn-xs']) !!}
 						</td>
 					</tr> 
 					@endforeach
