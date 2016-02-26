@@ -18,9 +18,9 @@ class CheckupdateController extends Controller
     	$deviceid = $request->id;
 
     	$apk = Apk::where('pkgname', $pkgname)
-            ->where('version', '>', $version)
+            // ->where('version', '>', $version)
             ->first();
-        print_r($apk);
+        // print_r($apk);
     	if(!empty($apk)){
     		if($apk->version > $version){
     			echo "have update\n";
