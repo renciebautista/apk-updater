@@ -20,17 +20,17 @@ class CheckupdateController extends Controller
     	$apk = Apk::where('pkgname', $pkgname)
             ->where('version', '>', $version )
             ->first();
-
-    	if(!empty($apk)){
-    		if($apk->version > $version){
-    			echo "have update\n";
-        		// echo "http://apps.chasetech.com/api/protected/app-debug.apk\n";
-                echo action('Api\UpdateapkController@download', array('token' => $apk->token, 'filename' => $apk->filename))."\n";
-    		}else{
-    			echo "no update available\n";
-    		}
-    	}else{
-    		echo "apk not found\n";
-    	}
+        dd($apk);
+    	// if(!empty($apk)){
+    	// 	if($apk->version > $version){
+    	// 		echo "have update\n";
+     //    		// echo "http://apps.chasetech.com/api/protected/app-debug.apk\n";
+     //            echo action('Api\UpdateapkController@download', array('token' => $apk->token, 'filename' => $apk->filename))."\n";
+    	// 	}else{
+    	// 		echo "no update available\n";
+    	// 	}
+    	// }else{
+    	// 	echo "apk not found\n";
+    	// }
     }
 }
