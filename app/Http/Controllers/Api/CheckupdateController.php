@@ -23,7 +23,7 @@ class CheckupdateController extends Controller
         }
     }
 
-    public function verifybeta(Request $request){
+    public function betaverify(Request $request){
         $pkgname = $request->input('pkgname', 'www.chasetch.com');
         $apk = TestApk::where('pkgname', $pkgname)->first();
 
