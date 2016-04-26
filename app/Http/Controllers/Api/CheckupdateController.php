@@ -17,7 +17,7 @@ class CheckupdateController extends Controller
         $apk = Apk::where('pkgname', $pkgname)->first();
 
         if(!empty($apk)){
-             echo $apk->version;
+            echo $apk->version;
         }else{
             echo "0";
         }
@@ -28,7 +28,7 @@ class CheckupdateController extends Controller
         $apk = Apk::where('pkgname', $pkgname)->first();
 
         if(!empty($apk)){
-             echo $apk->version;
+            echo $apk->version;
         }else{
             echo "0";
         }
