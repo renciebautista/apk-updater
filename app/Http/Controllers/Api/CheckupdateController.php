@@ -25,7 +25,7 @@ class CheckupdateController extends Controller
 
     public function verifybeta(Request $request){
         $pkgname = $request->input('pkgname', 'www.chasetch.com');
-        $apk = Apk::where('pkgname', $pkgname)->first();
+        $apk = TestApk::where('pkgname', $pkgname)->first();
 
         if(!empty($apk)){
             echo $apk->version;
