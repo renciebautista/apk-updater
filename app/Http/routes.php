@@ -29,8 +29,10 @@ Route::group(array('prefix' => 'api'), function()
 {
 	Route::get('protected/{token}/{file_name}', 'Api\UpdateapkController@download');
 	Route::post('check', 'Api\CheckupdateController@check');
+	Route::post('verify', 'Api\CheckupdateController@verify');
 
 	Route::get('betaprotected/{token}/{file_name}', 'Api\UpdateapkController@betadownload');
 	Route::post('betacheck', 'Api\CheckupdateController@betacheck');
+	Route::post('betaverify', 'Api\CheckupdateController@betaverify');
 
 });

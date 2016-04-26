@@ -12,6 +12,27 @@ use App\TestApk;
 
 class CheckupdateController extends Controller
 {
+    public function verify(Request $request){
+        $pkgname = $request->input('pkgname', 'www.chasetch.com');
+        $apk = Apk::where('pkgname', $pkgname)->first();
+
+        if(!empty($apk)){
+             echo $apk->version;
+        }else{
+            echo "0";
+        }
+    }
+
+    public function verifybeta(Request $request){
+        $pkgname = $request->input('pkgname', 'www.chasetch.com');
+        $apk = Apk::where('pkgname', $pkgname)->first();
+
+        if(!empty($apk)){
+             echo $apk->version;
+        }else{
+            echo "0";
+        }
+    }
     public function check(Request $request){
     	$pkgname = $request->input('pkgname', 'www.chasetch.com');
     	$version = $request->input('version', 0);
