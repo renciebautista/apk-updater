@@ -7,8 +7,8 @@
 <div class="row">
 
 	<div class="col-md-12">
-		<h1 class="page-header">Apk Lists</h1>
-		{!! Html::linkRoute('apk.create', 'Add Apk', array(), ['class' => 'btn btn-primary btn-sm']) !!}
+		<h1 class="page-header">Beta Apk Lists</h1>
+		{!! Html::linkRoute('testapk.create', 'Add Beta Apk', array(), ['class' => 'btn btn-primary btn-sm']) !!}
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -38,12 +38,12 @@
 						<td>{{ $apk->created_at }}</td> 
 						<td>{{ $apk->md5 }}</td> 
 						<td>
-							{!! Form::open(array('method' => 'DELETE', 'action' => array('ApkController@destroy', $apk->id), 'class' => 'disable-button')) !!}                       
+							{!! Form::open(array('method' => 'DELETE', 'action' => array('TestApkController@destroy', $apk->id), 'class' => 'disable-button')) !!}                       
 							{!! Form::submit('Remove', array('class'=> 'btn btn-danger btn-xs','onclick' => "if(!confirm('Are you sure to delete this apk?')){return false;};")) !!}
 							{!! Form::close() !!}
 						</td>
 						<td>
-							{!! Html::linkRoute('apk.show', 'Download', array('id' => $apk->id), ['class' => 'btn btn-success btn-xs']) !!}
+							{!! Html::linkRoute('testapk.show', 'Download', array('id' => $apk->id), ['class' => 'btn btn-success btn-xs']) !!}
 						</td>
 					</tr> 
 					@endforeach

@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 use Session;
 
-use App\Apk;
+use App\TestApk;
 
-class ApkController extends Controller
+class TestApkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +20,8 @@ class ApkController extends Controller
      */
     public function index()
     {
-        $apks = Apk::all();
-        return view('apk.index', compact('apks'));
+        $apks = TestApk::all();
+        return view('testapk.index', compact('apks'));
     }
 
     /**
@@ -30,7 +31,7 @@ class ApkController extends Controller
      */
     public function create()
     {
-        return view('apk.create');
+        return view('testapk.create');
     }
 
     /**
@@ -62,13 +63,13 @@ class ApkController extends Controller
 
         $package_name = $manifest->getPackageName();
 
-        if(Apk::packageExist($package_name)){
+        if(TestApk::packageExist($package_name)){
             Session::flash('flash_class', 'alert-danger');
-            Session::flash('flash_message', 'Apk namespace already exist.');
-            return redirect()->route("apk.create");
+            Session::flash('flash_message', 'Beta Apk namespace already exist.');
+            return redirect()->route("testapk.create");
         }
 
-        Apk::create(array(
+        TestApk::create(array(
             'app_name' => $appLabel[0],
             'pkgname' => $package_name,
             'version' => $manifest->getVersionCode(),
@@ -79,7 +80,7 @@ class ApkController extends Controller
             'token' => md5(uniqid(mt_rand(), true))));
 
 
-        $folderpath = base_path().'/storage/apk/'.$manifest->getPackageName();
+        $folderpath = base_path().'/storage/beta_apk/'.$manifest->getPackageName();
         if (!\File::exists($folderpath))
         {
             \File::makeDirectory($folderpath);
@@ -87,7 +88,7 @@ class ApkController extends Controller
 
         $file_path = $request->file('file')->move($folderpath,$actual_name);
 
-        return redirect()->route("apk.index");
+        return redirect()->route("testapk.index");
 
     }
 
@@ -99,8 +100,8 @@ class ApkController extends Controller
      */
     public function show($id)
     {
-        $apk = Apk::findOrFail($id);
-        $path = base_path().'/storage/apk/'.$apk->pkgname.'/'.$apk->filename;
+        $apk = TestApk::findOrFail($id);
+        $path = base_path().'/storage/beta_apk/'.$apk->pkgname.'/'.$apk->filename;
         return \Response::download($path, $apk->file_name);
     }
 
@@ -135,16 +136,16 @@ class ApkController extends Controller
      */
     public function destroy($id)
     {
-        $apk = Apk::findOrFail($id);
+        $apk = TestApk::findOrFail($id);
 
-        $path =  base_path().'/storage/apk/'.$apk->pkgname;
+        $path =  base_path().'/storage/beta_apk/'.$apk->pkgname;
         \File::deleteDirectory($path);
 
         $apk->delete();
         
         Session::flash('flash_class', 'alert-success');
-        Session::flash('flash_message', 'Apk successfully deleted.');
-        return redirect()->route("apk.index");
+        Session::flash('flash_message', 'Beta Apk successfully deleted.');
+        return redirect()->route("testapk.index");
 
     }
 }

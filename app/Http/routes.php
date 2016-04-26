@@ -19,6 +19,7 @@ Route::get('auth/logout', ['as' => 'auth.logout', 'uses' =>  'Auth\AuthControlle
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', ['as' => 'apk.index', 'uses' => 'ApkController@index']);
     Route::resource('apk', 'ApkController');
+    Route::resource('testapk', 'TestApkController');
 
 });
 
@@ -26,8 +27,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(array('prefix' => 'api'), function()
 {
-	Route::get('test', 'Api\UpdateapkController@index');
 	Route::get('protected/{token}/{file_name}', 'Api\UpdateapkController@download');
 	Route::post('check', 'Api\CheckupdateController@check');
-	
+
+	Route::get('betaprotected/{token}/{file_name}', 'Api\UpdateapkController@betadownload');
+	Route::post('betacheck', 'Api\CheckupdateController@betacheck');
+
 });

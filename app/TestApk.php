@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Apk extends Model
+class TestApk extends Model
 {
     protected $fillable = ['app_name', 'pkgname', 'version', 'version_name', 'md5', 'filename', 'filesize', 'token'];
 
